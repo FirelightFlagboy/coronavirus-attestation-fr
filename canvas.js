@@ -9,20 +9,26 @@ function canvasAddEvents(canvas) {
 	canvas.currY = 0;
 	canvas.drawing = false;
 
-	canvas.addEventListener("mousedown", beginDraw);
+	canvas.addEventListener("mousedown", mouseBeginDraw);
+	canvas.addEventListener("mousemove", mouseUpdateDraw);
 	canvas.addEventListener("mouseup", stopDrawing);
 	canvas.addEventListener("mouseout", stopDrawing);
-	canvas.addEventListener("mousemove", updateDraw);
-	canvas.addEventListener("touchstart", beginDraw);
-	canvas.addEventListener("touchmove", updateDraw);
-	canvas.addEventListener("touchend", stopDrawing);
+
+	canvas.addEventListener("touchstart", touchBeginDraw, false);
+	canvas.addEventListener("touchmove", touchUpdateDraw, false);
+	canvas.addEventListener("touchcancel", touchStopDraw, false);
+	canvas.addEventListener("touchleave", touchStopDraw, false);
+	canvas.addEventListener("touchend", touchStopDraw, false);
 }
 
-function beginDraw(e) {
-	let canvas = e.target;
+function mouseBeginDraw(e) {
+	beginDraw(e.target, e.clientX, e.clientY);
+}
+
+function beginDraw(canvas, x, y) {
 	let ctx = canvas.ctx;
 
-	updateCoordinate(canvas, e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+	updateCoordinate(canvas, x - canvas.offsetLeft, y - canvas.offsetTop);
 
 	canvas.drawing = true;
 
@@ -39,17 +45,16 @@ function updateCoordinate(canvas, x, y) {
 	canvas.currY = y;
 }
 
-function stopDrawing(e) {
-	e.target.drawing = false;
+function mouseUpdateDraw(e) {
+	updateDraw(e.target, e.clientX, e.clientY);
 }
 
-function updateDraw(e) {
-	let canvas = e.target;
+function updateDraw(canvas, x, y) {
 	let ctx = canvas.ctx;
 
 	if (canvas.drawing !== true)
 		return;
-	updateCoordinate(canvas, e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+	updateCoordinate(canvas, x - canvas.offsetLeft, y - canvas.offsetTop);
 	ctx.beginPath();
 	ctx.moveTo(canvas.prevX, canvas.prevY);
 	ctx.lineTo(canvas.currX, canvas.currY);
@@ -57,4 +62,38 @@ function updateDraw(e) {
 	ctx.lineWidth = 2;
 	ctx.stroke();
 	ctx.closePath();
+}
+
+
+function stopDrawing(e) {
+	e.target.drawing = false;
+}
+
+function touchBeginDraw(e) {
+	disableScroll();
+	beginDraw(e.target, e.touches[0].pageX, e.touches[0].pageY);
+}
+
+function disableScroll() {
+	scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+	window.onscroll = function (e) {
+		e.preventDefault()
+		e.stopPropagation();
+		window.scrollTo(scrollLeft, scrollTop);
+	}
+}
+
+function touchUpdateDraw(e) {
+	updateDraw(e.target, e.touches[0].pageX, e.touches[0].pageY);
+}
+
+function touchStopDraw(e) {
+	enableScroll();
+	stopDrawing(e);
+}
+
+function enableScroll() {
+	window.onscroll = () => { };
 }
