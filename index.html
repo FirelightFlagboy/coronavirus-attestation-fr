@@ -14,7 +14,7 @@
 			cadre
 			de la lutte contre la propagation du virus Covid-19 :</p>
 	</header>
-	<article>
+	<article id="personal-info">
 		<p>Je soussigné(e)</p>
 		<div>
 			<span>Mme / M.</span>
@@ -29,12 +29,10 @@
 			<input type="text" name="addresses" id="address">
 		</div>
 	</article>
-	<article>
-		<p>ATTESTATION DE DÉPLACEMENT DÉROGATOIREEn application de l’article 1er du décret du 16 mars 2020 portant
-			réglementation des déplacements dans le cadre de la lutte contre la propagation du virus Covid-19 :certifie
-			que mon déplacement est lié au motif suivant (cocher la case) autorisé par l’article 1er du décret du 16
-			mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du virus
-			Covid-19 :</p>
+	<article id="justification-type">
+		<p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l’article 1er du décret
+			du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du
+			virus Covid-19 :</p>
 		<div>
 			<input type="radio" name="motif" id="work">
 			<label for="work">
@@ -76,6 +74,7 @@
 		<span>le</span>
 		<input type="date" name="current-date" id="current-date">
 		<p>(signature)</p>
+		<canvas id="signature" width="200" height="200"></canvas>
 	</footer>
 </body>
 
