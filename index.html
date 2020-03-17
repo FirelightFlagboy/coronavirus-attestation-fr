@@ -4,78 +4,117 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
+		async="true">
 	<title>Document</title>
 </head>
 
 <body>
-	<header>
-		<h4>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h4>
-		<p>En application de l’article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le
-			cadre
-			de la lutte contre la propagation du virus Covid-19 :</p>
-	</header>
-	<article id="personal-info">
-		<p>Je soussigné(e)</p>
-		<div>
-			<span>Mme / M.</span>
-			<input type="text" name="name" id="name" />
-		</div>
-		<div>
-			<span>Né(e) le:</span>
-			<input type="date" name="born_date" id="born_date" />
-		</div>
-		<div>
-			<span>Demeurant :</span>
-			<input type="text" name="addresses" id="address">
-		</div>
-	</article>
-	<article id="justification-type">
-		<p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l’article 1er du décret
-			du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation du
-			virus Covid-19 :</p>
-		<div>
-			<input type="radio" name="motif" id="work">
-			<label for="work">
-				déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle, lorsqu’ils sont
-				indispensables à l’exercice d’activités ne pouvant être organisées sous forme de télétravail (sur
-				justificatif permanent) ou déplacements professionnels ne pouvant être différés ;
-			</label>
-		</div>
-		<div>
-			<input type="radio" name="motif" id="basic">
-			<label for="basic">
-				déplacements pour effectuer des achats de première nécessité dans des établissements autorisés (liste
-				sur
-				gouvernement.fr) ;
-			</label>
-		</div>
-		<div>
-			<input type="radio" name="motif" id="health">
-			<label for="health">
-				déplacements pour motif de santé ;
-			</label>
-		</div>
-		<div>
-			<input type="radio" name="motif" id="family">
-			<label for="family">déplacements pour motif familial impérieux, pour l’assistance aux personnes vulnérables
-				ou
-				la garde d’enfants </label>
-		</div>
-		<div>
-			<input type="radio" name="motif" id="short">
-			<label for="short">déplacements brefs, à proximité du domicile, liés à l’activité physique individuelle des
-				personnes, à l’exclusion de toute pratique sportive collective, et aux besoins des animaux de
-				compagnie</label>
-		</div>
-	</article>
-	<footer>
-		<span>Fait à</span>
-		<input type="text" name="address-level12" id="town">
-		<span>le</span>
-		<input type="date" name="current-date" id="current-date">
-		<p>(signature)</p>
-		<canvas id="signature" width="200" height="200"></canvas>
-	</footer>
+	<form>
+
+		<header>
+			<h4>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h4>
+			<p>En application de l’article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le
+				cadre
+				de la lutte contre la propagation du virus Covid-19 :</p>
+		</header>
+		<article id="personal-info mb-4">
+			<p>Je soussigné(e)</p>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Mme / M.</span>
+				</div>
+				<input type="text" name="name" id="name" class="form-control">
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Né(e) le:</span>
+				</div>
+				<input type="date" name="born_date" id="born_date" class="form-control">
+			</div>
+			<div class=" input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Demeurant :</span>
+				</div>
+				<input type="text" name="addresses" id="address" class="form-control">
+			</div>
+		</article>
+		<article id="justification-type">
+			<p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l’article 1er du
+				décret
+				du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation
+				du
+				virus Covid-19 :</p>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="radio" name="motif" id="work">
+					</div>
+				</div>
+				<label for="work" class="form-control">
+					déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle, lorsqu’ils sont
+					indispensables à l’exercice d’activités ne pouvant être organisées sous forme de télétravail (sur
+					justificatif permanent) ou déplacements professionnels ne pouvant être différés ;
+				</label>
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="radio" name="motif" id="basic">
+					</div>
+				</div>
+				<label for="basic" class="form-control">
+					déplacements pour effectuer des achats de première nécessité dans des établissements autorisés
+					(liste
+					sur
+					gouvernement.fr) ;
+				</label>
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="radio" name="motif" id="health">
+					</div>
+				</div>
+				<label for="health" class="form-control">
+					déplacements pour motif de santé ;
+				</label>
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="radio" name="motif" id="family">
+					</div>
+				</div>
+				<label for="family" class="form-control">déplacements pour motif familial impérieux, pour l’assistance
+					aux personnes
+					vulnérables
+					ou
+					la garde d’enfants </label>
+			</div>
+			<div class="input-group mb-1">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="radio" name="motif" id="short">
+					</div>
+				</div>
+				<label for="short" class="form-control">déplacements brefs, à proximité du domicile, liés à l’activité
+					physique individuelle
+					des
+					personnes, à l’exclusion de toute pratique sportive collective, et aux besoins des animaux de
+					compagnie</label>
+			</div>
+		</article>
+		<footer>
+			<span>Fait à</span>
+			<input type="text" name="address-level12" id="town">
+			<span>le</span>
+			<input type="date" name="current-date" id="current-date">
+			<p>(signature)</p>
+			<canvas id="signature" width="200" height="200" class="border"></canvas>
+		</footer>
+	</form>
 </body>
 
 </html>
