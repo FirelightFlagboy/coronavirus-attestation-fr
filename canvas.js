@@ -9,20 +9,49 @@ function canvasAddEvents(canvas) {
 	canvas.currY = 0;
 	canvas.drawing = false;
 
-	canvas.addEventListener("mousedown", beginDraw);
+	canvas.addEventListener("mousedown", (e) => beginDraw(e.target, e.clientX, e.clientY));
 	canvas.addEventListener("mouseup", stopDrawing);
 	canvas.addEventListener("mouseout", stopDrawing);
-	canvas.addEventListener("mousemove", updateDraw);
-	canvas.addEventListener("touchstart", beginDraw);
-	canvas.addEventListener("touchmove", updateDraw);
-	canvas.addEventListener("touchend", stopDrawing);
+	canvas.addEventListener("mousemove", (e) => updateDraw(e.target, e.clientX, e.clientY));
+
+	canvas.addEventListener("touchstart", (e) => {
+		disableScroll();
+		beginDraw(e.target, e.touches[0].pageX, e.touches[0].pageY);
+	}, false);
+	canvas.addEventListener("touchmove", (e) => updateDraw(e.target, e.touches[0].pageX, e.touches[0].pageY), false);
+	canvas.addEventListener("touchcancel", (e) => {
+		enableScroll();
+		stopDrawing(e);
+	}, false);
+	canvas.addEventListener("touchleave", (e) => {
+		enableScroll();
+		stopDrawing(e);
+	}, false);
+	canvas.addEventListener("touchend", (e) => {
+		enableScroll();
+		stopDrawing(e);
+	}, false);
 }
 
-function beginDraw(e) {
-	let canvas = e.target;
+function disableScroll() {
+	scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+	scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+	window.onscroll = function (e) {
+		e.preventDefault()
+		e.stopPropagation();
+		window.scrollTo(scrollLeft, scrollTop);
+	}
+}
+
+function enableScroll() {
+	window.onscroll = () => { };
+}
+
+function beginDraw(canvas, x, y) {
 	let ctx = canvas.ctx;
 
-	updateCoordinate(canvas, e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+	updateCoordinate(canvas, x - canvas.offsetLeft, y - canvas.offsetTop);
 
 	canvas.drawing = true;
 
@@ -43,13 +72,12 @@ function stopDrawing(e) {
 	e.target.drawing = false;
 }
 
-function updateDraw(e) {
-	let canvas = e.target;
+function updateDraw(canvas, x, y) {
 	let ctx = canvas.ctx;
 
 	if (canvas.drawing !== true)
 		return;
-	updateCoordinate(canvas, e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+	updateCoordinate(canvas, x - canvas.offsetLeft, y - canvas.offsetTop);
 	ctx.beginPath();
 	ctx.moveTo(canvas.prevX, canvas.prevY);
 	ctx.lineTo(canvas.currX, canvas.currY);
