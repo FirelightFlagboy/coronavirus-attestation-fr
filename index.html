@@ -107,12 +107,18 @@
 			</div>
 		</article>
 		<footer>
-			<span>Fait à</span>
-			<input type="text" name="address-level12" id="town">
-			<span>le</span>
-			<input type="date" name="current-date" id="current-date">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Fait à</span>
+				</div>
+				<input type="text" name="address-level12" id="town" class="form-control">
+				<div class="input-group-prepend">
+					<span class="input-group-text">ls</span>
+				</div>
+				<input type="date" name="current-date" id="current-date" class="form-control">
+			</div>
 			<p>(signature)</p>
-			<canvas id="signature" width="200" height="200" class="border"></canvas>
+			<canvas id="signature" class="form-control"></canvas>
 		</footer>
 	</form>
 </body>
