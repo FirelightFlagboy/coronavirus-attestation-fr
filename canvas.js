@@ -33,9 +33,7 @@ function beginDraw(canvas, x, y) {
 	canvas.drawing = true;
 
 	ctx.beginPath();
-	ctx.fillStyle = "black";
-	ctx.fillRect(canvas.currX, canvas.currY, 2, 2);
-	ctx.closePath();
+	ctx.moveTo(canvas.currX, canvas.currY, 2, 2);
 }
 
 function updateCoordinate(canvas, x, y) {
@@ -55,45 +53,27 @@ function updateDraw(canvas, x, y) {
 	if (canvas.drawing !== true)
 		return;
 	updateCoordinate(canvas, x - canvas.offsetLeft, y - canvas.offsetTop);
-	ctx.beginPath();
-	ctx.moveTo(canvas.prevX, canvas.prevY);
 	ctx.lineTo(canvas.currX, canvas.currY);
-	ctx.strokeStyle = "black";
-	ctx.lineWidth = 2;
 	ctx.stroke();
-	ctx.closePath();
 }
 
 
 function stopDrawing(e) {
+	e.target.getContext("2d").closePath();
 	e.target.drawing = false;
+
 }
 
 function touchBeginDraw(e) {
-	disableScroll();
+	e.preventDefault();
 	beginDraw(e.target, e.touches[0].pageX, e.touches[0].pageY);
 }
 
-function disableScroll() {
-	scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-	scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-
-	window.onscroll = function (e) {
-		e.preventDefault()
-		e.stopPropagation();
-		window.scrollTo(scrollLeft, scrollTop);
-	}
-}
-
 function touchUpdateDraw(e) {
+	e.preventDefault();
 	updateDraw(e.target, e.touches[0].pageX, e.touches[0].pageY);
 }
 
 function touchStopDraw(e) {
-	enableScroll();
 	stopDrawing(e);
-}
-
-function enableScroll() {
-	window.onscroll = () => { };
 }
