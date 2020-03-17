@@ -105,22 +105,28 @@
 					compagnie</label>
 			</div>
 		</article>
-		<footer class="d-block">
-			<div class="input-group">
+		<footer class="d-block mt-3">
+			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Fait à</span>
 				</div>
 				<input type="text" name="address-level12" id="town" class="form-control">
 				<div class="input-group-prepend">
-					<span class="input-group-text">ls</span>
+					<span class="input-group-text">le</span>
 				</div>
 				<input type="date" name="current-date" id="current-date" class="form-control">
 			</div>
-			<p>(signature)</p>
-			<canvas id="signature" class="border border-secondary rounded"></canvas>
+			<div>
+				<div class="input-group-prepend mb-1">
+					<span class="input-group-text">signature</span>
+				</div>
+				<canvas id="signature" class="border border-secondary">
+				</canvas>
+			</div>
 		</footer>
 	</form>
 	<script src="canvas.js"></script>
+	<script src="main.js"></script>
 </body>
 
 </html>
