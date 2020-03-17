@@ -6,12 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
-		async="true">
+		async="true" media="screen">
+	<link rel="stylesheet" href="print.css" type="text/css" media="print">
 	<title>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</title>
 </head>
 
 <body>
-	<form class="mx-2 my-1">
+	<form class="mx-2 my-1" id="form">
 		<header class="text-center">
 			<h4>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h4>
 			<p>En application de l’article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le
@@ -24,19 +25,19 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">Mme / M.</span>
 				</div>
-				<input type="text" name="name" id="name" class="form-control">
+				<input type="text" name="name" id="name" class="form-control" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Né(e) le:</span>
 				</div>
-				<input type="date" name="born_date" id="born_date" class="form-control">
+				<input type="date" name="born_date" id="born_date" class="form-control" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Demeurant :</span>
 				</div>
-				<input type="text" name="addresses" id="address" class="form-control">
+				<input type="text" name="addresses" id="address" class="form-control" required>
 			</div>
 		</article>
 		<article id="justification-type d-block mb-3">
@@ -48,7 +49,7 @@
 			<div class="input-group mb-1">
 				<div class="input-group-prepend">
 					<div class="input-group-text">
-						<input type="radio" name="motif" id="work">
+						<input type="radio" name="motif" id="work" required>
 					</div>
 				</div>
 				<label for="work" class="form-control">
@@ -60,7 +61,7 @@
 			<div class="input-group mb-1">
 				<div class="input-group-prepend">
 					<div class="input-group-text">
-						<input type="radio" name="motif" id="basic">
+						<input type="radio" name="motif" id="basic" required>
 					</div>
 				</div>
 				<label for="basic" class="form-control">
@@ -73,7 +74,7 @@
 			<div class="input-group mb-1">
 				<div class="input-group-prepend">
 					<div class="input-group-text">
-						<input type="radio" name="motif" id="health">
+						<input type="radio" name="motif" id="health" required>
 					</div>
 				</div>
 				<label for="health" class="form-control">
@@ -83,7 +84,7 @@
 			<div class="input-group mb-1">
 				<div class="input-group-prepend">
 					<div class="input-group-text">
-						<input type="radio" name="motif" id="family">
+						<input type="radio" name="motif" id="family" required>
 					</div>
 				</div>
 				<label for="family" class="form-control">déplacements pour motif familial impérieux, pour l’assistance
@@ -95,7 +96,7 @@
 			<div class="input-group mb-1">
 				<div class="input-group-prepend">
 					<div class="input-group-text">
-						<input type="radio" name="motif" id="short">
+						<input type="radio" name="motif" id="short" required>
 					</div>
 				</div>
 				<label for="short" class="form-control">déplacements brefs, à proximité du domicile, liés à l’activité
@@ -110,22 +111,24 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">Fait à</span>
 				</div>
-				<input type="text" name="address-level12" id="town" class="form-control">
+				<input type="text" name="address-level12" id="town" class="form-control" required>
 				<div class="input-group-prepend">
 					<span class="input-group-text">le</span>
 				</div>
-				<input type="date" name="current-date" id="current-date" class="form-control">
+				<input type="date" name="current-date" id="current-date" class="form-control" required>
 			</div>
 			<div>
 				<div class="input-group-prepend mb-1">
 					<span class="input-group-text">signature</span>
 				</div>
-				<canvas id="signature" class="border border-secondary">
-				</canvas>
+				<div class="d-flex mb-3">
+					<canvas id="signature" class="border border-secondary rounded mr-2">
+					</canvas>
+					<button type="button" class="btn btn-danger mb-auto" id="clear-signature">clear</button>
+				</div>
 			</div>
-			<button type="button" class="btn btn-danger" id="clear-signature">clear</button>
 		</footer>
-		<button type="button" class="btn btn-primary" id="print">imprimer</button>
+		<button type="submit" class="btn btn-primary">imprimer</button>
 	</form>
 	<script src="canvas.js"></script>
 	<script src="main.js"></script>
