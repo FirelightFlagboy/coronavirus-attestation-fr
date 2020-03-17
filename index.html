@@ -11,9 +11,8 @@
 </head>
 
 <body>
-	<form>
-
-		<header>
+	<form class="mx-2 my-1">
+		<header class="text-center">
 			<h4>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</h4>
 			<p>En application de l’article 1er du décret du 16 mars 2020 portant réglementation des déplacements dans le
 				cadre
@@ -33,14 +32,14 @@
 				</div>
 				<input type="date" name="born_date" id="born_date" class="form-control">
 			</div>
-			<div class=" input-group">
+			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Demeurant :</span>
 				</div>
 				<input type="text" name="addresses" id="address" class="form-control">
 			</div>
 		</article>
-		<article id="justification-type">
+		<article id="justification-type d-block mb-3">
 			<p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l’article 1er du
 				décret
 				du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation
@@ -106,7 +105,7 @@
 					compagnie</label>
 			</div>
 		</article>
-		<footer>
+		<footer class="d-block">
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Fait à</span>
@@ -118,9 +117,10 @@
 				<input type="date" name="current-date" id="current-date" class="form-control">
 			</div>
 			<p>(signature)</p>
-			<canvas id="signature" class="form-control"></canvas>
+			<canvas id="signature" class="border border-secondary rounded"></canvas>
 		</footer>
 	</form>
+	<script src="canvas.js"></script>
 </body>
 
 </html>
