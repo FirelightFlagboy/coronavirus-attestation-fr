@@ -121,14 +121,17 @@
 				<div class="input-group-prepend mb-1">
 					<span class="input-group-text">signature</span>
 				</div>
-				<div class="d-flex mb-3">
-					<canvas id="signature" class="border border-secondary rounded mr-2">
+				<div>
+					<canvas id="signature" class="border border-secondary rounded">
 					</canvas>
-					<button type="button" class="btn btn-danger mb-auto" id="clear-signature">clear</button>
 				</div>
+				<button type="button" class="btn btn-danger mb-3" id="clear-signature">Clear</button>
 			</div>
 		</footer>
-		<button type="submit" class="btn btn-primary">imprimer</button>
+		<div>
+			<button type="submit" class="btn btn-primary">Imprimer</button>
+			<button type="reset" class="btn btn-danger">Reset</button>
+		</div>
 	</form>
 	<script src="canvas.js"></script>
 	<script src="main.js"></script>
