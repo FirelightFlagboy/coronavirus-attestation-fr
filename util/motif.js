@@ -1,4 +1,4 @@
-export const motif = {
+export const motifs = {
 	work: {
 		short: "Pour le travaille",
 		long: "Déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle, lorsqu’ils sont indispensables à l’exercice d’activités ne pouvant être organisées sous forme de télétravail ou déplacements professionnels ne pouvant être différés.",
