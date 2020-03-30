@@ -46,64 +46,23 @@
 				du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation
 				du
 				virus Covid-19 :</p>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="work" required>
+			<div class="form-group mb-3">
+				<div class='input-group'>
+					<div class="input-group-prepend">
+						<label for="motif" class="input-group-text"> Motif</label>
 					</div>
+					<select id='motif' class="custom-select" required>
+						<option value="" selected></option>
+						<option value="work">Pour le travaille</option>
+						<option value="basic">Pour des achats nécessaires</option>
+						<option value="health">Pour des soins</option>
+						<option value="family">Raison familial</option>
+						<option value="trip">Activite physique ou besoins des animaux de compagnie</option>
+						<option value="judicial">Convocation judiciare</option>
+						<option value="mig">Missions d'intérêt general</option>
+					</select>
 				</div>
-				<label for="work" class="form-control">
-					déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle, lorsqu’ils sont
-					indispensables à l’exercice d’activités ne pouvant être organisées sous forme de télétravail (sur
-					justificatif permanent) ou déplacements professionnels ne pouvant être différés ;
-				</label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="basic" required>
-					</div>
-				</div>
-				<label for="basic" class="form-control">
-					déplacements pour effectuer des achats de première nécessité dans des établissements autorisés
-					(liste
-					sur
-					gouvernement.fr) ;
-				</label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="health" required>
-					</div>
-				</div>
-				<label for="health" class="form-control">
-					déplacements pour motif de santé ;
-				</label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="family" required>
-					</div>
-				</div>
-				<label for="family" class="form-control">déplacements pour motif familial impérieux, pour l’assistance
-					aux personnes
-					vulnérables
-					ou
-					la garde d’enfants </label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="short" required>
-					</div>
-				</div>
-				<label for="short" class="form-control">déplacements brefs, à proximité du domicile, liés à l’activité
-					physique individuelle
-					des
-					personnes, à l’exclusion de toute pratique sportive collective, et aux besoins des animaux de
-					compagnie</label>
+				<small class="form-text text-muted" id='motif-detail'></small>
 			</div>
 		</article>
 		<footer class="d-block mt-3">
@@ -115,7 +74,7 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">le</span>
 				</div>
-				<input type="date" name="current-date" id="current-date" class="form-control" required>
+				<input type="datetime-local" name="current-date" id="current-date" class="form-control" required>
 			</div>
 			<div>
 				<div class="input-group-prepend mb-1">
