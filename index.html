@@ -65,6 +65,30 @@
 				<small class="form-text text-muted" id='motif-detail'></small>
 			</div>
 		</article>
+		<article class="d-block mb-3">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">Fait à</span>
+				</div>
+				<input type="text" name="address-level12" id="town" class="form-control" required>
+			</div>
+			<div class="input-group mb-3" id='current-date-box'>
+				<div class="input-group-prepend">
+					<span class="input-group-text">le</span>
+				</div>
+				<input type="text" name="current-time" id="current-date" class="form-control" required>
+			</div>
+			<div style="display: none;" id='sign-box'>
+				<div class="input-group-prepend mb-1">
+					<span class="input-group-text">signature</span>
+				</div>
+				<div>
+					<canvas id="signature" class="border border-secondary rounded">
+					</canvas>
+				</div>
+				<button type="button" class="btn btn-danger mb-3" id="clear-signature">Clear</button>
+			</div>
+		</article>
 		<article class="mb-3">
 			<p>Options</p>
 			<div class="input-group mb-3">
@@ -80,36 +104,12 @@
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<div class="input-group-text">
-						<input type="checkbox" name="include-date" id="include-date" checked>
+						<input type="checkbox" name="include-signature" id="include-signature">
 					</div>
 				</div>
 				<label for="include-date" class="form-control"
 					title="Inclure la signature lors de la validation ou laisse le champs vide">Inclure la signature
 				</label>
-			</div>
-		</article>
-		<article class="d-block mb-3">
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text">Fait à</span>
-				</div>
-				<input type="text" name="address-level12" id="town" class="form-control" required>
-			</div>
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<span class="input-group-text">le</span>
-				</div>
-				<input type="text" name="current-time" id="current-date" class="form-control" required>
-			</div>
-			<div>
-				<div class="input-group-prepend mb-1">
-					<span class="input-group-text">signature</span>
-				</div>
-				<div>
-					<canvas id="signature" class="border border-secondary rounded">
-					</canvas>
-				</div>
-				<button type="button" class="btn btn-danger mb-3" id="clear-signature">Clear</button>
 			</div>
 		</article>
 		<footer>
