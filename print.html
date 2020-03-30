@@ -18,45 +18,49 @@
 			cadre
 			de la lutte contre la propagation du virus Covid-19 :</p>
 	</header>
-	<article>
+	<article class="mb-4">
 		<p>Je soussigné(e)</p>
 		<div>
 			<label for='name'>Mme / M. :</label>
-			<span name='name' id='name'>NAME</span>
+			<span class="text-capitalize" name='name' id='name'>NAME</span>
 		</div>
 		<div>
 			<label for="born">Né(e) le :</label>
-			<span name='born' id='born-date'>01/01/1970</span>
+			<span class="text-capitalize" name='born' id='born-date'>01/01/1970</span>
+		</div>
+		<div>
+			<label for="born-town">À :</label>
+			<span class="text-capitalize" name='born-town' id='born-town'>somewhere</span>
 		</div>
 		<div>
 			<label for="address">Demeurant :</label>
-			<span name='address' id='address'>somewhere</span>
+			<span class="text-capitalize" name='address' id='address'>somewhere</span>
 		</div>
 	</article>
-	<article>
-		<p>Certifie que mon déplacement est lié au motif suivant autorisé par l’article 1er du
-			décret
-			du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation
-			du
-			virus Covid-19 :</p>
+	<article class="mb-4">
+		<p>Certifie que mon déplacement est lié au motif suivant autorisé par l’article 3 du
+			décret du 23 mars 2020 prescrivant les mesures générales nécessaires pour faire face à
+			l’épidémie de Covid19 dans le cadre de l’état d’urgence sanitaire</p>
 		<p id='motif'>motif here</p>
 	</article>
 	<footer>
 		<div>
-			<label for="where">Fait à</label>
-			<span name="where" id="where">somewhere</span>
+			<label for="where">Fait à :</label>
+			<span class="text-capitalize" name="where" id="where">somewhere</span>
 		</div>
 		<div>
 			<label for="when">Le</label>
-			<span name="when" id="when"></span>
+			<span class="text-capitalize" name="when" id="when"></span>
 		</div>
 		<div>
 			<div>
-				<label for="signature">signature :</label>
+				<label for="signature">Signature :</label>
 			</div>
 			<img width="200" height="200" id='signature' />
 		</div>
 	</footer>
+
+	<script src="print.js" type="module"></script>
 </body>
 
 </html>
