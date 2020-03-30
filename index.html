@@ -71,17 +71,19 @@
 				<input type="text" name="created-where" id="created-where" class="form-control"
 					autocomplete="address-level2" required>
 			</div>
-			<div class="input-group mb-3" id='current-date-box'>
+			<div class="input-group mb-3" id='created-date-box'>
 				<div class="input-group-prepend">
 					<span class="input-group-text">le</span>
 				</div>
-				<input type="date" name="created-when" id="created-when-date" class="form-control" required>
+				<input type="date" name="created-when-date" id="created-when-date" class="form-control" required>
+			</div>
+			<div class='input-group mb-3' id='created-time-box'>
 				<div class="input-group-prepend">
 					<span class="input-group-text">à</span>
 				</div>
-				<input type="time" name="created-when" id="created-when-time" class="form-control" required>
+				<input type="time" name="created-when-time" id="created-when-time" class="form-control" required>
 			</div>
-			<div style="display: none;" id='sign-box'>
+			<div id='sign-box'>
 				<div class="input-group-prepend mb-1">
 					<span class="input-group-text">signature</span>
 				</div>
@@ -102,6 +104,16 @@
 				</div>
 				<label for="include-date" class="form-control"
 					title="Inclure la date lors de la validation ou laisse le champs vide">Inclure la date
+					actuelle</label>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" name="include-time" id="include-time">
+					</div>
+				</div>
+				<label for="include-time" class="form-control"
+					title="Inclure l'heure lors de la validation ou laisse le champs vide">Inclure l'heure
 					actuelle</label>
 			</div>
 			<div class="input-group mb-3">

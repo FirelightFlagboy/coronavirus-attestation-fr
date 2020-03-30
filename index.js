@@ -18,53 +18,6 @@ clearSignCanvas.addEventListener("click", (e) => {
 canvasAddEvents(canvas);
 
 // /**
-//  * motif part
-//  */
-// let motifDetailText = document.getElementById("motif-detail");
-// let motifSelector = document.getElementById('motif');
-
-// motifSelector.addEventListener('change', (e) => {
-// 	let value = e.target.value;
-// 	motifDetailText.textContent = motif_detail[value];
-// })
-
-// /**
-//  * check box part
-//  */
-// let checkSign = document.getElementById('include-signature');
-// let signBox = document.getElementById('sign-box');
-// let includeSignature = checkSign.checked;
-
-// let checkDate = document.getElementById('include-date');
-// let currentDateBox = document.getElementById('current-date-box');
-// let includeCurrrentDate = checkDate.checked;
-
-// /**
-//  *
-//  * @param {HTMLElement} element
-//  * @param {boolean} display
-//  */
-// function updateElementDisplay(element, display) {
-// 	if (display)
-// 		element.style.display = "";
-// 	else
-// 		element.style.display = "none";
-// }
-
-// updateElementDisplay(signBox, includeSignature);
-// updateElementDisplay(currentDateBox, includeCurrrentDate);
-
-// checkSign.addEventListener('change', (e) => {
-// 	includeSignature = e.target.checked;
-// 	updateElementDisplay(signBox, includeSignature);
-// });
-
-// checkDate.addEventListener('change', (e) => {
-// 	includeCurrrentDate = e.target.checked;
-// 	updateElementDisplay(currentDateBox, includeCurrrentDate);
-// });
-
-// /**
 //  * submit part
 //  */
 // document.getElementById("form").addEventListener("submit", (e) => {
@@ -91,10 +44,36 @@ let data = {
 	'born-where': undefined,
 	'born-when': undefined,
 	'created-where': undefined,
-	'created-when': undefined,
+	'created-when-date': undefined,
+	'created-when-time': undefined,
 	signature: undefined,
 };
 
+/**
+ *
+ * @param {HTMLElement} element
+ */
+function toggleDisplayGenerator(element) {
+	return (display) => {
+		element.style.display = display ? "" : "none";
+	}
+}
+
+/**
+ *
+ * @param {Function} callback
+ */
+function onChangeTogglerGenerator(callback) {
+	return (e) => {
+		callback(e.target.checked);
+	}
+}
+
+/**
+ *
+ * @param {Object} data
+ * @param {Function} format
+ */
 function onChangeGenerator(data, format = undefined) {
 	if (format) {
 		return (e) => {
@@ -120,6 +99,18 @@ function dateToTimestamp(date) {
 
 let reasonSelector = document.getElementById('reason');
 
+let includeDateToggler = document.getElementById('include-date');
+let includeTimeToggler = document.getElementById('include-time');
+let includeSignToggler = document.getElementById('include-signature');
+
+let toggleCreationDate = toggleDisplayGenerator(document.getElementById('created-date-box'));
+let toggleCreationTime = toggleDisplayGenerator(document.getElementById('created-time-box'));
+let toggleSignature = toggleDisplayGenerator(document.getElementById('sign-box'));
+
+toggleCreationDate(includeDateToggler.checked);
+toggleCreationTime(includeTimeToggler.checked);
+toggleSignature(includeSignToggler.checked);
+
 document.getElementById('name').addEventListener('change', onChangeGenerator(data));
 document.getElementById('born-when').addEventListener('change', onChangeGenerator(data, dateToTimestamp));
 document.getElementById('born-where').addEventListener('change', onChangeGenerator(data));
@@ -128,7 +119,12 @@ document.getElementById('residing').addEventListener('change', onChangeGenerator
 reasonSelector.addEventListener('change', onChangeGenerator(data));
 
 document.getElementById('created-where').addEventListener('change', onChangeGenerator(data));
-document.getElementById('created-when').addEventListener('change', onChangeGenerator(data, dateToTimestamp));
+document.getElementById('created-when-date').addEventListener('change', onChangeGenerator(data, dateToTimestamp));
+document.getElementById('created-when-time').addEventListener('change', onChangeGenerator(data, dateToTimestamp));
+
+includeDateToggler.addEventListener('change', onChangeTogglerGenerator(toggleCreationDate));
+includeTimeToggler.addEventListener('change', onChangeTogglerGenerator(toggleCreationTime));
+includeSignToggler.addEventListener('change', onChangeTogglerGenerator(toggleSignature));
 
 for (let motif in motifs) {
 	const short = motifs[motif].short;
