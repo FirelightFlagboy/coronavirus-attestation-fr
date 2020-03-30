@@ -76,13 +76,16 @@ checkDate.addEventListener('change', (e) => {
 document.getElementById("form").addEventListener("submit", (e) => {
 	e.preventDefault();
 	let name = document.getElementById('name').value;
-	let born = document.getElementById('born_date').value;
+	let born_date = document.getElementById('born_date').value;
 	let address = document.getElementById('address').value;
 	let reason = motifSelector.value;
 	let make_at_town = document.getElementById('town').value;
-	let at = document.getElementById('current-date').value;
-	let signature_uri = canvas.toDataURL();
+	let at = includeCurrrentDate && document.getElementById('current-date').value;
+	let signature_uri = includeSignature && canvas.toDataURL();
 
-	console.log(name, born, address, reason, make_at_town, at, signature_uri);
+	let data = { name, born_date, address, reason, make_at_town, at, signature_uri };
+	let bdata = btoa(JSON.stringify(data));
+	let newURL = 'print.html?data=' + bdata;
 
+	window.location.replace(newURL);
 });
