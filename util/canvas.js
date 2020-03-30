@@ -1,7 +1,7 @@
 /**
  * @param {HTMLCanvasElement} canvas
  */
-function canvasAddEvents(canvas) {
+export function canvasAddEvents(canvas) {
 	canvas.ctx = canvas.getContext("2d");
 	canvas.prevX = 0;
 	canvas.currX = 0;
