@@ -24,25 +24,27 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">Mme / M.</span>
 				</div>
-				<input type="text" name="name" id="name" class="form-control" required>
+				<input type="text" name="name" id="name" class="form-control" autocomplete="name" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Né(e) le:</span>
 				</div>
-				<input type="date" name="born-date" id="born-date" class="form-control" required>
+				<input type="date" name="born-when" id="born-when" class="form-control" autocomplete="bday" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">a</span>
 				</div>
-				<input type="text" name="addresses" id="born-address" class="form-control" required>
+				<input type="text" name="born-where" id="born-where" class="form-control" autocomplete="address-level2"
+					required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Demeurant :</span>
 				</div>
-				<input type="text" name="addresses" id="address" class="form-control" required>
+				<input type="text" name="residing" id="residing" class="form-control" autocomplete="address-level2"
+					required>
 			</div>
 		</article>
 		<article id="justification-type d-block mb-3">
@@ -52,9 +54,9 @@
 			<div class="form-group mb-3">
 				<div class='input-group'>
 					<div class="input-group-prepend">
-						<label for="motif" class="input-group-text"> Motif</label>
+						<label for="reason" class="input-group-text"> Motif</label>
 					</div>
-					<select id='motif' class="custom-select" required>
+					<select name='reason' id='reason' class="custom-select" required>
 						<option value="" selected>--- Choisisser un motif ---</option>
 					</select>
 				</div>
@@ -66,13 +68,14 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">Fait à</span>
 				</div>
-				<input type="text" name="addresses" id="town" class="form-control" required>
+				<input type="text" name="created-where" id="created-where" class="form-control"
+					autocomplete="address-level2" required>
 			</div>
 			<div class="input-group mb-3" id='current-date-box'>
 				<div class="input-group-prepend">
 					<span class="input-group-text">le</span>
 				</div>
-				<input type="text" name="current-time" id="current-date" class="form-control" required>
+				<input type="text" name="created-when" id="created-when" class="form-control" required>
 			</div>
 			<div style="display: none;" id='sign-box'>
 				<div class="input-group-prepend mb-1">
