@@ -52,13 +52,6 @@
 					</div>
 					<select id='motif' class="custom-select" required>
 						<option value="" selected>--- Choisisser un motif ---</option>
-						<option value="work">Pour le travaille</option>
-						<option value="basic">Pour des achats nécessaires</option>
-						<option value="health">Pour des soins</option>
-						<option value="family">Raison familial</option>
-						<option value="trip">Activite physique ou besoins des animaux de compagnie</option>
-						<option value="judicial">Convocation judiciare</option>
-						<option value="mig">Missions d'intérêt general</option>
 					</select>
 				</div>
 				<small class="form-text text-muted" id='motif-detail'></small>
@@ -106,7 +99,7 @@
 						<input type="checkbox" name="include-signature" id="include-signature">
 					</div>
 				</div>
-				<label for="include-date" class="form-control"
+				<label for="include-signature" class="form-control"
 					title="Inclure la signature lors de la validation ou laisse le champs vide">Inclure la signature
 				</label>
 			</div>
@@ -116,8 +109,7 @@
 			<button type="reset" class="btn btn-danger">Reset</button>
 		</footer>
 	</form>
-	<script src="canvas.js"></script>
-	<script src="index.js"></script>
+	<script src="index.js" type="module"></script>
 </body>
 
 </html>
