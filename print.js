@@ -25,7 +25,7 @@ nameField.textContent = data.name;
 bornDataField.textContent = new Intl.DateTimeFormat('fr-FR', dateTimeOptions)
 	.format(new Date(data.born_date));
 addressField.textContent = data.address
-motifField.textContent = motif[data.reason];
+motifField.textContent = motif[data.reason].long;
 whereField.textContent = data.where;
 
 if (data.when)
