@@ -41,7 +41,7 @@
 			</div>
 		</article>
 		<article id="justification-type d-block mb-3">
-			<p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l’article 1er du
+			<p>Certifie que mon déplacement est lié au motif suivant autorisé par l’article 1er du
 				décret
 				du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation
 				du
@@ -52,7 +52,7 @@
 						<label for="motif" class="input-group-text"> Motif</label>
 					</div>
 					<select id='motif' class="custom-select" required>
-						<option value="" selected></option>
+						<option value="" selected>--- Choisisser un motif ---</option>
 						<option value="work">Pour le travaille</option>
 						<option value="basic">Pour des achats nécessaires</option>
 						<option value="health">Pour des soins</option>
@@ -65,16 +65,41 @@
 				<small class="form-text text-muted" id='motif-detail'></small>
 			</div>
 		</article>
-		<footer class="d-block mt-3">
+		<article class="mb-3">
+			<p>Options</p>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" name="include-date" id="include-date" checked>
+					</div>
+				</div>
+				<label for="include-date" class="form-control"
+					title="Inclure la date lors de la validation ou laisse le champs vide">Inclure la date
+					actuelle</label>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" name="include-date" id="include-date" checked>
+					</div>
+				</div>
+				<label for="include-date" class="form-control"
+					title="Inclure la signature lors de la validation ou laisse le champs vide">Inclure la signature
+				</label>
+			</div>
+		</article>
+		<article class="d-block mb-3">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Fait à</span>
 				</div>
 				<input type="text" name="address-level12" id="town" class="form-control" required>
+			</div>
+			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">le</span>
 				</div>
-				<input type="datetime-local" name="current-date" id="current-date" class="form-control" required>
+				<input type="text" name="current-time" id="current-date" class="form-control" required>
 			</div>
 			<div>
 				<div class="input-group-prepend mb-1">
@@ -86,11 +111,11 @@
 				</div>
 				<button type="button" class="btn btn-danger mb-3" id="clear-signature">Clear</button>
 			</div>
-		</footer>
-		<div>
-			<button type="submit" class="btn btn-primary">Imprimer</button>
+		</article>
+		<footer>
+			<button type="submit" class="btn btn-primary">Valider</button>
 			<button type="reset" class="btn btn-danger">Reset</button>
-		</div>
+		</footer>
 	</form>
 	<script src="canvas.js"></script>
 	<script src="main.js"></script>
