@@ -22,11 +22,12 @@ export function canvasAddEvents(canvas) {
 }
 
 function mouseBeginDraw(e) {
-	beginDraw(e.target, e.clientX, e.clientY);
+	beginDraw(e.target, e.pageX, e.pageY);
 }
 
 function beginDraw(canvas, x, y) {
-	let ctx = canvas.ctx;
+	let ctx = canvas.getContext('2d');
+	canvas.ctx = ctx;
 
 	updateCoordinate(canvas, x - canvas.offsetLeft, y - canvas.offsetTop);
 
@@ -44,7 +45,7 @@ function updateCoordinate(canvas, x, y) {
 }
 
 function mouseUpdateDraw(e) {
-	updateDraw(e.target, e.clientX, e.clientY);
+	updateDraw(e.target, e.pageX, e.pageY);
 }
 
 function updateDraw(canvas, x, y) {
@@ -59,9 +60,16 @@ function updateDraw(canvas, x, y) {
 
 
 function stopDrawing(e) {
-	e.target.getContext("2d").closePath();
-	e.target.drawing = false;
+	const raiseEvent = e.target.drawing === true;
 
+	e.target.ctx.closePath();
+	e.target.drawing = false;
+	if (raiseEvent) {
+		let ne = document.createEvent("HTMLEvents");
+		ne.initEvent('change', true, true);
+		ne.eventName = 'change';
+		e.target.dispatchEvent(ne);
+	}
 }
 
 function touchBeginDraw(e) {
