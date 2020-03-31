@@ -7,10 +7,7 @@ const dateTimeOptions = {
 	day: 'numeric'
 };
 
-
-const params = new URLSearchParams(location.search)
-const edata = params.get('data');
-const sdata = atob(edata);
+const sdata = localStorage.data
 const data = JSON.parse(sdata);
 
 let nameField = document.getElementById('name');

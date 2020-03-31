@@ -150,10 +150,8 @@ document.getElementById('form').addEventListener('submit', (e) => {
 	data["created-when-date"] = includeDateToggler.checked && data["created-when-date"];
 	data.signature = includeSignToggler.checked && data.signature;
 
-	let bdata = btoa(JSON.stringify(data));
-	let newURL = 'print.html?data=' + bdata;
-
-	window.location.replace(newURL);
+	localStorage.data = JSON.stringify(data);
+	window.location.assign('print.html');
 })
 
 const date = new Date();
