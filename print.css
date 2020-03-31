@@ -1,32 +1,11 @@
-button {
-	display: none
+body {
+	width: 24cm;
+	height: 32cm;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5mm;
 }
 
-label {
-	margin-top: auto;
-	margin-bottom: auto;
-}
-
-.input-group {
-	display: flex;
-	flex: wrap;
-	align-items: stretch;
-}
-
-.input-group-text {
-	padding: .375rem .75rem;
-}
-.form-control {
-	border: none;
-}
-
-.text-center {
-	text-align: center;
-}
-
-.mb-3 {
-	margin-bottom: 1rem!important;
-}
-.mt-3 {
-	margin-top: 1rem!important;
+html {
+	background-color: lightgray;
 }

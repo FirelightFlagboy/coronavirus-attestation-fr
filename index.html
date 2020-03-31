@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"
 		async="true" media="screen">
-	<link rel="stylesheet" href="print.css" type="text/css" media="print">
 	<title>ATTESTATION DE DÉPLACEMENT DÉROGATOIRE</title>
 </head>
 
@@ -25,116 +24,115 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">Mme / M.</span>
 				</div>
-				<input type="text" name="name" id="name" class="form-control" required>
+				<input type="text" name="name" id="name" class="form-control" autocomplete="name" required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Né(e) le:</span>
 				</div>
-				<input type="date" name="born_date" id="born_date" class="form-control" required>
+				<input type="date" name="born-when" id="born-when" class="form-control" autocomplete="bday" required>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">a</span>
+				</div>
+				<input type="text" name="born-where" id="born-where" class="form-control" autocomplete="address-level2"
+					required>
 			</div>
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Demeurant :</span>
 				</div>
-				<input type="text" name="addresses" id="address" class="form-control" required>
+				<input type="text" name="residing" id="residing" class="form-control" autocomplete="address-level2"
+					required>
 			</div>
 		</article>
-		<article id="justification-type d-block mb-3">
-			<p>certifie que mon déplacement est lié au motif suivant (cocher la case) autorisé par l’article 1er du
-				décret
-				du 16 mars 2020 portant réglementation des déplacements dans le cadre de la lutte contre la propagation
-				du
-				virus Covid-19 :</p>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="work" required>
+		<article id="justification-type mb-3">
+			<p>Certifie que mon déplacement est lié au motif suivant autorisé par l’article 3 du décret du 23 mars 2020
+				prescrivant les mesures générales nécessaires pour faire face à l’épidémie de Covid19 dans le cadre de
+				l’état d’urgence sanitaire :</p>
+			<div class="form-group mb-3">
+				<div class='input-group'>
+					<div class="input-group-prepend">
+						<label for="reason" class="input-group-text"> Motif</label>
 					</div>
+					<select name='reason' id='reason' class="custom-select" required>
+						<option value="" selected>--- Choisisser un motif ---</option>
+					</select>
 				</div>
-				<label for="work" class="form-control">
-					déplacements entre le domicile et le lieu d’exercice de l’activité professionnelle, lorsqu’ils sont
-					indispensables à l’exercice d’activités ne pouvant être organisées sous forme de télétravail (sur
-					justificatif permanent) ou déplacements professionnels ne pouvant être différés ;
-				</label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="basic" required>
-					</div>
-				</div>
-				<label for="basic" class="form-control">
-					déplacements pour effectuer des achats de première nécessité dans des établissements autorisés
-					(liste
-					sur
-					gouvernement.fr) ;
-				</label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="health" required>
-					</div>
-				</div>
-				<label for="health" class="form-control">
-					déplacements pour motif de santé ;
-				</label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="family" required>
-					</div>
-				</div>
-				<label for="family" class="form-control">déplacements pour motif familial impérieux, pour l’assistance
-					aux personnes
-					vulnérables
-					ou
-					la garde d’enfants </label>
-			</div>
-			<div class="input-group mb-1">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="radio" name="motif" id="short" required>
-					</div>
-				</div>
-				<label for="short" class="form-control">déplacements brefs, à proximité du domicile, liés à l’activité
-					physique individuelle
-					des
-					personnes, à l’exclusion de toute pratique sportive collective, et aux besoins des animaux de
-					compagnie</label>
+				<small class="form-text text-muted" id='motif-detail'></small>
 			</div>
 		</article>
-		<footer class="d-block mt-3">
+		<article class="mb-3">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Fait à</span>
 				</div>
-				<input type="text" name="address-level12" id="town" class="form-control" required>
+				<input type="text" name="created-where" id="created-where" class="form-control"
+					autocomplete="address-level2" required>
+			</div>
+			<div class="input-group mb-3" id='created-date-box'>
 				<div class="input-group-prepend">
 					<span class="input-group-text">le</span>
 				</div>
-				<input type="date" name="current-date" id="current-date" class="form-control" required>
+				<input type="date" name="created-when-date" id="created-when-date" class="form-control">
 			</div>
-			<div>
+			<div class='input-group mb-3' id='created-time-box'>
+				<div class="input-group-prepend">
+					<span class="input-group-text">à</span>
+				</div>
+				<input type="time" name="created-when-time" id="created-when-time" class="form-control">
+			</div>
+			<div id='sign-box'>
 				<div class="input-group-prepend mb-1">
 					<span class="input-group-text">signature</span>
 				</div>
 				<div>
-					<canvas id="signature" class="border border-secondary rounded">
+					<canvas id="signature" class="border border-secondary rounded" width="200" height="200">
 					</canvas>
 				</div>
 				<button type="button" class="btn btn-danger mb-3" id="clear-signature">Clear</button>
 			</div>
-		</footer>
-		<div>
-			<button type="submit" class="btn btn-primary">Imprimer</button>
+		</article>
+		<article class="mb-3">
+			<p>Options</p>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" name="include-date" id="include-date" checked>
+					</div>
+				</div>
+				<label for="include-date" class="form-control"
+					title="Inclure la date lors de la validation ou laisse le champs vide">Inclure la date
+					actuelle</label>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" name="include-time" id="include-time">
+					</div>
+				</div>
+				<label for="include-time" class="form-control"
+					title="Inclure l'heure lors de la validation ou laisse le champs vide">Inclure l'heure
+					actuelle</label>
+			</div>
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" name="include-signature" id="include-signature">
+					</div>
+				</div>
+				<label for="include-signature" class="form-control"
+					title="Inclure la signature lors de la validation ou laisse le champs vide">Inclure la signature
+				</label>
+			</div>
+		</article>
+		<footer>
+			<button type="submit" class="btn btn-primary">Valider</button>
 			<button type="reset" class="btn btn-danger">Reset</button>
-		</div>
+		</footer>
 	</form>
-	<script src="canvas.js"></script>
-	<script src="main.js"></script>
+	<script src="index.js" type="module"></script>
 </body>
 
 </html>
