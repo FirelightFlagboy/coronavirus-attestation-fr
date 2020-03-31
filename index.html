@@ -47,7 +47,7 @@
 					required>
 			</div>
 		</article>
-		<article id="justification-type d-block mb-3">
+		<article id="justification-type mb-3">
 			<p>Certifie que mon déplacement est lié au motif suivant autorisé par l’article 3 du décret du 23 mars 2020
 				prescrivant les mesures générales nécessaires pour faire face à l’épidémie de Covid19 dans le cadre de
 				l’état d’urgence sanitaire :</p>
@@ -63,7 +63,7 @@
 				<small class="form-text text-muted" id='motif-detail'></small>
 			</div>
 		</article>
-		<article class="d-block mb-3">
+		<article class="mb-3">
 			<div class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">Fait à</span>
@@ -75,20 +75,20 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">le</span>
 				</div>
-				<input type="date" name="created-when-date" id="created-when-date" class="form-control" required>
+				<input type="date" name="created-when-date" id="created-when-date" class="form-control">
 			</div>
 			<div class='input-group mb-3' id='created-time-box'>
 				<div class="input-group-prepend">
 					<span class="input-group-text">à</span>
 				</div>
-				<input type="time" name="created-when-time" id="created-when-time" class="form-control" required>
+				<input type="time" name="created-when-time" id="created-when-time" class="form-control">
 			</div>
 			<div id='sign-box'>
 				<div class="input-group-prepend mb-1">
 					<span class="input-group-text">signature</span>
 				</div>
 				<div>
-					<canvas id="signature" class="border border-secondary rounded">
+					<canvas id="signature" class="border border-secondary rounded" width="300" height="200">
 					</canvas>
 				</div>
 				<button type="button" class="btn btn-danger mb-3" id="clear-signature">Clear</button>
