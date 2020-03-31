@@ -1,10 +1,6 @@
 import { canvasAddEvents } from './util/canvas.js'
 import { motifs } from './util/motif.js'
 
-const date = new Date();
-document.getElementById("created-when-date").value = date.toISOString('fr-FR').slice(0, 10)
-document.getElementById("created-when-time").value = date.toLocaleTimeString('fr-FR')
-
 /**
  * canvas part
  */
@@ -16,26 +12,6 @@ clearSignCanvas.addEventListener("click", (e) => {
 });
 
 canvasAddEvents(canvas);
-
-// /**
-//  * submit part
-//  */
-// document.getElementById("form").addEventListener("submit", (e) => {
-// 	e.preventDefault();
-// 	let name = document.getElementById('name').value;
-// 	let born_date = document.getElementById('born_date').value;
-// 	let address = document.getElementById('address').value;
-// 	let reason = motifSelector.value;
-// 	let make_at_town = document.getElementById('town').value;
-// 	let at = includeCurrrentDate && document.getElementById('current-date').value;
-// 	let signature_uri = includeSignature && canvas.toDataURL();
-
-// 	let data = { name, born_date, address, reason, make_at_town, at, signature_uri };
-// 	let bdata = btoa(JSON.stringify(data));
-// 	let newURL = 'print.html?data=' + bdata;
-
-// 	window.location.replace(newURL);
-// });
 
 let data = {
 	name: undefined,
@@ -93,8 +69,29 @@ function onChangeGenerator(data, format = undefined) {
 	}
 }
 
+/**
+ *
+ * @param {*} date an object that can be used by Date
+ */
 function dateToTimestamp(date) {
-	return new Date(date).getTime();
+	const [year, month, day] = date.split('-');
+
+	date = new Date(0);
+	date.setFullYear(parseInt(year), parseInt(month) - 1, parseInt(day));
+	return date.getTime();
+}
+
+/**
+ *
+ * @param {String} time
+ */
+function timeToTimestamp(time) {
+	const [hours, minutes] = time.split(':');
+
+	time = new Date(0)
+	time.setHours(parseInt(hours));
+	time.setMinutes(parseInt(minutes));
+	return time.getTime();
 }
 
 let reasonSelector = document.getElementById('reason');
@@ -107,6 +104,11 @@ let toggleCreationDate = toggleDisplayGenerator(document.getElementById('created
 let toggleCreationTime = toggleDisplayGenerator(document.getElementById('created-time-box'));
 let toggleSignature = toggleDisplayGenerator(document.getElementById('sign-box'));
 
+let reasonText = document.getElementById('motif-detail');
+
+const createdDateSelector = document.getElementById('created-when-date');
+const createdTimeSelector = document.getElementById('created-when-time');
+
 toggleCreationDate(includeDateToggler.checked);
 toggleCreationTime(includeTimeToggler.checked);
 toggleSignature(includeSignToggler.checked);
@@ -116,15 +118,23 @@ document.getElementById('born-when').addEventListener('change', onChangeGenerato
 document.getElementById('born-where').addEventListener('change', onChangeGenerator(data));
 document.getElementById('residing').addEventListener('change', onChangeGenerator(data));
 
-reasonSelector.addEventListener('change', onChangeGenerator(data));
+reasonSelector.addEventListener('change', onChangeGenerator(data, (reason) => {
+	reasonText.textContent = motifs[reason].long;
+	return reason;
+}));
 
 document.getElementById('created-where').addEventListener('change', onChangeGenerator(data));
-document.getElementById('created-when-date').addEventListener('change', onChangeGenerator(data, dateToTimestamp));
-document.getElementById('created-when-time').addEventListener('change', onChangeGenerator(data, dateToTimestamp));
+createdDateSelector.addEventListener('change', onChangeGenerator(data, dateToTimestamp));
+createdTimeSelector.addEventListener('change', onChangeGenerator(data, timeToTimestamp));
 
 includeDateToggler.addEventListener('change', onChangeTogglerGenerator(toggleCreationDate));
 includeTimeToggler.addEventListener('change', onChangeTogglerGenerator(toggleCreationTime));
 includeSignToggler.addEventListener('change', onChangeTogglerGenerator(toggleSignature));
+
+canvas.addEventListener('change', (e) => {
+	data.signature = canvas.toDataURL();
+	console.log(canvas.toDataURL());
+})
 
 for (let motif in motifs) {
 	const short = motifs[motif].short;
@@ -133,3 +143,23 @@ for (let motif in motifs) {
 	opt.textContent = short;
 	reasonSelector.appendChild(opt);
 }
+
+document.getElementById('form').addEventListener('submit', (e) => {
+	e.preventDefault();
+	data["created-when-time"] = includeTimeToggler.checked && data["created-when-time"];
+	data["created-when-date"] = includeDateToggler.checked && data["created-when-date"];
+	data.signature = includeSignToggler.checked && data.signature;
+
+	let bdata = btoa(JSON.stringify(data));
+	let newURL = 'print.html?data=' + bdata;
+
+	window.location.replace(newURL);
+})
+
+const date = new Date();
+
+createdDateSelector.value = date.toISOString('fr-FR').slice(0, 10);
+createdTimeSelector.value = date.toTimeString().slice(0, 5);
+
+data["created-when-date"] = dateToTimestamp(createdDateSelector.value);
+data["created-when-time"] = timeToTimestamp(createdTimeSelector.value);
